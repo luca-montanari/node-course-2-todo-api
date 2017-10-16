@@ -86,18 +86,11 @@ app.patch('/todos/:id', authenticate, (req, res) => {
         body.completed = false;
         body.completedAt = null;
     }
-
-    console.log('ffffffffff', body);
-
-    //Todo.findOneAndUpdate({_id: id, _creator: req.user._id}, {$set: body}, {new: true}).then((todo) => {
-        Todo.findOneAndUpdate({_id: id, _creator: req.user._id}, {$set: {text: "ssss"}}, {new: true}).then((todo) => {
+    Todo.findOneAndUpdate({_id: id, _creator: req.user._id}, {$set: {text: "ssss"}}, {new: true}).then((todo) => {
         if (!todo) {
             return res.status(404).send();
         }
         res.send({todo});
-
-        console.log('porca puttana');
-
     }).catch((e) => {
         res.status(400).send();
     });
