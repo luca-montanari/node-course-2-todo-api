@@ -91,6 +91,9 @@ app.patch('/todos/:id', authenticate, (req, res) => {
             return res.status(404).send();
         }
         res.send({todo});
+
+        console.log('porca puttana');
+
     }).catch((e) => {
         res.status(400).send();
     });
